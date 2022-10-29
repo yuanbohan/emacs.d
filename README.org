@@ -1,0 +1,54 @@
+#+OPTIONS: toc:nil date:nil timestamp:nil
+#+TITLE: Emacs Configuration
+#+AUTHOR: Yuanbo Han
+#+DATE:
+#+EMAIL: yuanbo.han@gmail.com
+
+I use GNU Emacs, and I use *org* file to config emacs, not just documentation. move all files to ~$HOME/.emacs.d~, restart your emacs, packages will be downloaded, installed and configured automatically.
+
+** Attention
+
+- font setting may fail your emacs restart, comment it or install the fonts needed
+- libvterm needs to be compiled, if you do not need it, comment the package
+- there are ~heavy~ coding related packages, you'd better comment packages you don't need
+
+** major mode for coding
+
+- [X] Rust - eglot
+- [X] Golang - eglot
+- [X] Clojure - cider
+- [ ] Python
+- [ ] Elixir
+- [ ] Haskell
+- [ ] \LaTeX
+- [ ] Java
+
+** Resources
+
+*** packages
+
+- [[https://github.com/jwiegley/use-package][use-package]] which makes configuration clean
+- [[https://magit.vc][Magit]] MUST use
+- [[https://orgmode.org][Org-mode]] which you SHOULD use for doc, note, plan
+- [[https://github.com/joaotavora/yasnippet][yasnippet]] which you SHOULD use for coding
+- [[https://github.com/joaotavora/eglot][eglot-mode]] which you SHOULD consider for better coding experience
+
+*** blogs or videos
+
+- [[https://www.gnu.org/software/emacs/tour/index.html][A Guided Tour of Emacs]]
+- [[https://sachachua.com/blog/][sachachua]]
+- [[https://cestlaz.github.io/stories/emacs/][Mike Zamansky]]
+- [[https://www.youtube.com/watch?v=VaBdlcYaZLQ&t=881s][Vim vs Emacs by distrotube]]
+- [[https://www.youtube.com/watch?v=CTOhosGQ2f0&t=29s][one very nice emacs workflow on YouTube]]
+- [[http://emacsrocks.com/][emacs rocks]]
+- [[https://www.reddit.com/r/emacs/comments/74hetz/emacs_everywhere/][emacs everywhere]]
+- [[https://www.youtube.com/channel/UCDEtZ7AKmwS0_GNJog01D2g][Uncle Dave - youtube channel]]
+- [[https://www.reddit.com/r/emacs/comments/88yzp4/better_way_to_run_terminals_in_emacs/][run terminals in emacs]]
+- [[https://justinbarclay.me/posts/literate_programming_against_rest_apis/][Literate Programming against REST APIs]]
+
+** Thanks to
+
+- [[https://github.com/xtang][xtang]], I encountered Emacs
+- [[https://github.com/sunng87][sunng87]], I did something interesting with Rust and Golang
+- BearyChat, I encountered Clojure, Erlang
+- [[https://tubitv.com/][Tubi]], I stumbled into Elixir
