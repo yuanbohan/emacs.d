@@ -4,13 +4,23 @@
 #+DATE:
 #+EMAIL: yuanbo.han@gmail.com
 
-I use GNU Emacs, and I use *org* file to config emacs, not just documentation. move all files to ~$HOME/.emacs.d~, restart your emacs, packages will be downloaded, installed and configured automatically.
+I use GNU Emacs, and I use *org* file to config emacs, not just documentation.
+
+#+begin_src shell
+  cd $HOME/.emacs.d
+  git clone git@github.com:yuanbohan/emacs.d.git
+#+end_src
+
+restart your emacs, packages will be downloaded, installed and configured automatically
+
+#+caption: emacs on macOS Ventura
+[[./emacs-on-macos.png]]
 
 ** Attention
 
-- font setting may fail your emacs restart, comment it or install the fonts needed
-- libvterm needs to be compiled, if you do not need it, comment the package
-- there are ~heavy~ coding related packages, you'd better comment packages you don't need
+- font setting may fail your emacs startup, comment it or install the fonts needed
+- ~libvterm~ needs to be compiled, if you do not need it, comment the package
+- there are heavy coding related packages, you'd better comment packages you don't need them
 
 ** major mode for coding
 

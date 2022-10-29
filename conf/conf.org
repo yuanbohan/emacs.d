@@ -1,6 +1,6 @@
 #+PROPERTY: header-args :comments yes :results silent
 
-* shortcuts frequently used but easy to forget
+* shortcuts frequently used
 
 | command         | description                                       |
 |-----------------+---------------------------------------------------|
