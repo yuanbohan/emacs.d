@@ -5,6 +5,7 @@ cider-history
 projectile-bookmarks.eld
 recentf
 tramp
+conf/conf.el
 
 .cache/
 auto-save-list/
