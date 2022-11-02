@@ -7,7 +7,6 @@
 | C-S-<backspace> | runs the command kill-whole-line                  |
 | C-c M-k         | duplicate-line                                    |
 | C-c C-k         | copy-line                                         |
-| C-c b           | browse-url                                        |
 | C-c r           | browse-at-remote                                  |
 | C-x C-q         | Toggles read only mode                            |
 | C-c C-SPC       | whitespace-cleanup                                |
@@ -42,6 +41,7 @@
 | C-x w           | elfeed                                            |
 | C-=             | expand-region                                     |
 | s-c             | avy-goto-xxx                                      |
+| C-.             | embark                                            |
 |-----------------+---------------------------------------------------|
 | C-c e l         | eglot                                             |
 | C-c C-r         | eglot-rename                                      |
@@ -154,7 +154,7 @@ https://www.jetbrains.com/lp/mono/
 https://fonts.google.com/specimen/Ubuntu+Mono
 
 #+BEGIN_SRC emacs-lisp
-  (set-frame-font "JetBrains Mono 18" nil t)
+  (set-frame-font "JetBrains Mono 20" nil t)
   ;; (set-frame-font "Ubuntu Mono 18" nil t)
 #+END_SRC
 
@@ -286,10 +286,10 @@ https://fonts.google.com/specimen/Ubuntu+Mono
   ;; M-x color-theme-sanityinc-tomorrow-blue
   ;; M-x color-theme-sanityinc-tomorrow-bright
   ;; M-x color-theme-sanityinc-tomorrow-eighties
-  ;; (use-package color-theme-sanityinc-tomorrow
-  ;;   :ensure t
-  ;;   :config
-  ;;   (require 'color-theme-sanityinc-tomorrow))
+  (use-package color-theme-sanityinc-tomorrow
+    :ensure t
+    :config
+    (require 'color-theme-sanityinc-tomorrow))
 
   ;; (use-package dracula-theme
   ;;   :ensure t
@@ -312,12 +312,12 @@ https://fonts.google.com/specimen/Ubuntu+Mono
   ;;   :defer t
   ;;   :init (load-theme 'spacemacs-dark t))
 
-  (use-package nord-theme
-    :ensure t
-    :config
-    ;; (add-to-list 'custom-theme-load-path
-    ;;              (expand-file-name "~/.emacs.d/themes/"))
-    (load-theme 'nord t))
+  ;; (use-package nord-theme
+  ;;   :ensure t
+  ;;   :config
+  ;;   ;; (add-to-list 'custom-theme-load-path
+  ;;   ;;              (expand-file-name "~/.emacs.d/themes/"))
+  ;;   (load-theme 'nord t))
 #+END_SRC
 
 * mode line
@@ -653,14 +653,14 @@ https://fonts.google.com/specimen/Ubuntu+Mono
     (add-hook 'go-mode-hook #'eglot-format-buffer-on-save)
 
     :bind
-    (("C-c e l" . 'eglot)
-     ("C-c C-r" . 'eglot-rename)
-     ("C-c C-'" . 'eglot-code-actions)
+    (("C-s-e" . 'eglot)
+     ("C-s-r" . 'eglot-rename)
+     ("C-s-'" . 'eglot-code-actions)
 
-     ("C-c f p" . 'flymake-goto-prev-error)
-     ("C-c f n" . 'flymake-goto-next-error)
-     ("C-c f b" . 'flymake-show-buffer-diagnostics)
-     ("C-c f s" . 'flymake-show-project-diagnostics)))
+     ("C-s-p" . 'flymake-goto-prev-error)
+     ("C-s-n" . 'flymake-goto-next-error)
+     ("C-s-b" . 'flymake-show-buffer-diagnostics)
+     ("C-s-s" . 'flymake-show-project-diagnostics)))
 #+end_src
 
 ** clojure and cider
@@ -1299,8 +1299,11 @@ https://fonts.google.com/specimen/Ubuntu+Mono
   ;;                           (projects . 5))))
 #+END_SRC
 * browse url
+
+use embark instead
+
 #+begin_src emacs-lisp
-  (global-set-key (kbd "C-c b") 'browse-url)
+  ;; (global-set-key (kbd "C-c b") 'browse-url)
 #+end_src
 
 * elfeed
