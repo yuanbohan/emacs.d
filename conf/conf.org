@@ -154,7 +154,7 @@ https://www.jetbrains.com/lp/mono/
 https://fonts.google.com/specimen/Ubuntu+Mono
 
 #+BEGIN_SRC emacs-lisp
-  (set-frame-font "JetBrains Mono 18" nil t)
+  (set-frame-font "JetBrains Mono 20" nil t)
   ;; (set-frame-font "Ubuntu Mono 18" nil t)
 #+END_SRC
 
