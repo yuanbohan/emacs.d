@@ -43,9 +43,13 @@
 | s-c             | avy-goto-xxx                                      |
 | C-.             | embark                                            |
 |-----------------+---------------------------------------------------|
-| C-c e l         | eglot                                             |
-| C-c C-r         | eglot-rename                                      |
-| C-c C-'         | eglot-code-actions                                |
+| C-s-e           | eglot                                             |
+| C-s-r           | eglot-rename                                      |
+| C-s-'           | eglot-code-actions                                |
+| C-s-p           | flymake-goto-prev-error                           |
+| C-s-n           | flymake-goto-next-error                           |
+| C-s-b           | flymake-show-buffer-diagnostics                   |
+| C-s-s           | flymake-show-project-diagnostics                  |
 |                 |                                                   |
 | C-M-i           | complete-symbol                                   |
 | C-h .           | eldoc-doc-buffer                                  |
@@ -53,8 +57,6 @@
 | M-.             | xref-find-definitions                             |
 | M-,             | xref-pop-marker-stack                             |
 | s-/             | comment-region-or-line                            |
-| C-c M-p         | flymake-goto-prev-error                           |
-| C-c M-n         | flymake-goto-next-error                           |
 |-----------------+---------------------------------------------------|
 | Org mode        | TODO                                              |
 |-----------------+---------------------------------------------------|
@@ -154,7 +156,7 @@ https://www.jetbrains.com/lp/mono/
 https://fonts.google.com/specimen/Ubuntu+Mono
 
 #+BEGIN_SRC emacs-lisp
-  (set-frame-font "JetBrains Mono 20" nil t)
+  (set-frame-font "JetBrains Mono 12" nil t)
   ;; (set-frame-font "Ubuntu Mono 18" nil t)
 #+END_SRC
 
@@ -177,8 +179,8 @@ https://fonts.google.com/specimen/Ubuntu+Mono
 * transparency
 
 #+BEGIN_SRC emacs-lisp
-  ;; (set-frame-parameter (selected-frame) 'alpha '(85 100))
-  ;; (add-to-list 'default-frame-alist '(alpha 85 100))
+  (set-frame-parameter (selected-frame) 'alpha '(80 100))
+  (add-to-list 'default-frame-alist '(alpha 80 100))
 #+END_SRC
 
 * smart-line
@@ -354,18 +356,18 @@ https://fonts.google.com/specimen/Ubuntu+Mono
 * exec-path-from-shell
 
 #+BEGIN_SRC emacs-lisp
-  (use-package exec-path-from-shell
-    :ensure t
-    :defer 5
-    :config
+  ;; (use-package exec-path-from-shell
+  ;;   :ensure t
+  ;;   :defer 5
+  ;;   :config
 
-    ;; (setq exec-path-from-shell-arguments nil)
+  ;;   ;; (setq exec-path-from-shell-arguments nil)
 
-    (when (memq window-system '(mac ns x))
-      (dolist (var '("https_proxy" "http_proxy" "all_proxy" "GOPATH"))
-        (add-to-list 'exec-path-from-shell-variables var))
+  ;;   (when (memq window-system '(mac ns x))
+  ;;     (dolist (var '("https_proxy" "http_proxy" "all_proxy" "GOPATH"))
+  ;;       (add-to-list 'exec-path-from-shell-variables var))
 
-      (exec-path-from-shell-initialize)))
+  ;;     (exec-path-from-shell-initialize)))
 #+END_SRC
 
 * yasnippet
@@ -1444,6 +1446,7 @@ The prefix key C-x t
 
       (treemacs-hide-gitignored-files-mode nil))
     :bind
+    ;; M-- M-0 switch workspace
     (:map global-map
           ("M-0"       . treemacs-select-window)
           ("C-x t 1"   . treemacs-delete-other-windows)
