@@ -2,64 +2,68 @@
 
 * shortcuts frequently used
 
-| command         | description                                       |
-|-----------------+---------------------------------------------------|
-| C-S-<backspace> | runs the command kill-whole-line                  |
-| C-c M-k         | duplicate-line                                    |
-| C-c C-k         | copy-line                                         |
-| C-c r           | browse-at-remote                                  |
-| C-x C-q         | Toggles read only mode                            |
-| C-c C-SPC       | whitespace-cleanup                                |
-| C-x /           | google this                                       |
-| M-\             | delete-horizontal-space                           |
-| M-/             | dabbrev-expand                                    |
-| M-!             | shell-command                                     |
-| M-&             | Like M-!, but asynchronous                        |
-|-----------------+---------------------------------------------------|
-| M-j             | ivy-yank-word                                     |
-| C-c k           | counsel-rg                                        |
-| C-*             | swiper-thing-at-point                             |
-| M-o             | ivy-dispatching-done                              |
-| C-M-j           | Exits with the current input instead of candidate |
-|-----------------+---------------------------------------------------|
-| M-}             | Move forward to end of paragraph                  |
-| M-{             | Move backward to start of paragraph               |
-|-----------------+---------------------------------------------------|
-| C-t             | Transpose characters                              |
-| M-t             | Transpose words                                   |
-|-----------------+---------------------------------------------------|
-| C-x ( and C-x ) | Starts and stops macro recording                  |
-| C-x e           | Plays last macro                                  |
-|-----------------+---------------------------------------------------|
-| C-x 4 d/f/b     | Opens dired/file/buffer in other window           |
-| C-x r m/l/b     | Set/List/Jump bookmark                            |
-| C-c o           | occur                                             |
-| M-o             | ace-window                                        |
-| s-t             | treemacs                                          |
-| C-c t           | libvterm                                          |
-| s-p             | projectile                                        |
-| C-x w           | elfeed                                            |
-| C-=             | expand-region                                     |
-| s-c             | avy-goto-xxx                                      |
-| C-.             | embark                                            |
-|-----------------+---------------------------------------------------|
-| C-s-e           | eglot                                             |
-| C-s-r           | eglot-rename                                      |
-| C-s-'           | eglot-code-actions                                |
-| C-s-p           | flymake-goto-prev-error                           |
-| C-s-n           | flymake-goto-next-error                           |
-| C-s-b           | flymake-show-buffer-diagnostics                   |
-| C-s-s           | flymake-show-project-diagnostics                  |
-|                 |                                                   |
-| C-M-i           | complete-symbol                                   |
-| C-h .           | eldoc-doc-buffer                                  |
-| M-?             | xref-find-references                              |
-| M-.             | xref-find-definitions                             |
-| M-,             | xref-pop-marker-stack                             |
-| s-/             | comment-region-or-line                            |
-|-----------------+---------------------------------------------------|
-| Org mode        | TODO                                              |
-|-----------------+---------------------------------------------------|
+| command                | description                                        |
+|------------------------+----------------------------------------------------|
+| C-S-<backspace>        | runs the command kill-whole-line                   |
+| C-c M-k                | duplicate-line                                     |
+| C-c C-k                | copy-line                                          |
+| C-c r                  | browse-at-remote                                   |
+| C-x C-q                | Toggles read only mode                             |
+| C-c C-SPC              | whitespace-cleanup                                 |
+| C-x /                  | google this                                        |
+| M-\                    | delete-horizontal-space                            |
+| M-/                    | dabbrev-expand                                     |
+| M-!                    | shell-command                                      |
+| M-&                    | Like M-!, but asynchronous                         |
+|------------------------+----------------------------------------------------|
+| M-j                    | ivy-yank-word                                      |
+| C-c k                  | counsel-rg                                         |
+| C-*                    | swiper-thing-at-point                              |
+| M-o                    | ivy-dispatching-done                               |
+| C-M-j                  | Exits with the current input instead of candidate  |
+|------------------------+----------------------------------------------------|
+| M-}                    | Move forward to end of paragraph                   |
+| M-{                    | Move backward to start of paragraph                |
+|------------------------+----------------------------------------------------|
+| C-t                    | Transpose characters                               |
+| M-t                    | Transpose words                                    |
+|------------------------+----------------------------------------------------|
+| C-x ( and C-x )        | Starts and stops macro recording                   |
+| C-x e                  | Plays last macro                                   |
+|------------------------+----------------------------------------------------|
+| C-x 4 d/f/b            | Opens dired/file/buffer in other window            |
+| C-x r m/l/b            | Set/List/Jump bookmark                             |
+| C-c o                  | occur                                              |
+| M-o                    | ace-window                                         |
+| s-t                    | treemacs                                           |
+| C-c t                  | libvterm                                           |
+| s-p                    | projectile                                         |
+| C-x w                  | elfeed                                             |
+| C-=                    | expand-region                                      |
+| s-c                    | avy-goto-xxx                                       |
+| C-.                    | embark                                             |
+|------------------------+----------------------------------------------------|
+| C-s-e                  | eglot                                              |
+| C-s-r                  | eglot-rename                                       |
+| C-s-'                  | eglot-code-actions                                 |
+| C-s-p                  | flymake-goto-prev-error                            |
+| C-s-n                  | flymake-goto-next-error                            |
+| C-s-b                  | flymake-show-buffer-diagnostics                    |
+| C-s-s                  | flymake-show-project-diagnostics                   |
+|                        |                                                    |
+| C-M-i                  | complete-symbol                                    |
+| C-h .                  | eldoc-doc-buffer                                   |
+| M-?                    | xref-find-references                               |
+| M-.                    | xref-find-definitions                              |
+| M-,                    | xref-pop-marker-stack                              |
+| s-/                    | comment-region-or-line                             |
+|------------------------+----------------------------------------------------|
+| C-\                    | toggle-input-method                                |
+| C-x RET C-\            | set-input-method                                   |
+| M-x list-input-methods | Display a list of all the supported input methods. |
+|------------------------+----------------------------------------------------|
+| Org mode               | TODO                                               |
+|------------------------+----------------------------------------------------|
 
 * speed init
 
@@ -205,28 +209,7 @@ https://fonts.google.com/specimen/Ubuntu+Mono
     (yank))
   (global-set-key (kbd "C-c M-k") 'duplicate-line)
 
-  ;; (defun smart-open-line ()
-  ;;   "Insert an empty line after the current line. Position the cursor at its beginning, according to the current mode."
-  ;;   (interactive)
-  ;;   (move-end-of-line nil)
-  ;;   (newline-and-indent))
-  ;; (defun smart-open-line-above ()
-  ;;   "Insert an empty line above the current line. Position the cursor at it's beginning, according to the current mode."
-  ;;   (interactive)
-  ;;   (move-beginning-of-line nil)
-  ;;   (newline-and-indent)
-  ;;   (forward-line -1)
-  ;;   (indent-according-to-mode))
-  ;; (global-set-key (kbd "s-<return>") 'smart-open-line)
-  ;; (global-set-key (kbd "s-S-<return>") 'smart-open-line-above)
-
-  ;; (defun move-below-line-up ()
-  ;;   "Join the current line with the next line."
-  ;;   (interactive)
-  ;;   (delete-indentation 1))
-  ;; (global-set-key (kbd "s-j") 'move-below-line-up)
-
-  ;; (global-set-key (kbd "C-M-l") 'goto-line)
+  (global-set-key (kbd "s-l") 'goto-line)
 #+END_SRC
 
 * browse-at-remote
@@ -337,20 +320,26 @@ https://fonts.google.com/specimen/Ubuntu+Mono
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-  (use-package spaceline
-    :ensure t
-    :config
-    (require 'spaceline-config)
-    (spaceline-emacs-theme))
+  ;; (use-package spaceline
+  ;;   :ensure t
+  ;;   :config
+  ;;   (require 'spaceline-config)
+  ;;   (spaceline-emacs-theme))
 #+END_SRC
 
 #+begin_src elisp
-  ;; (use-package all-the-icons
-  ;;   :ensure t)
+  ;; M-x all-the-icons-install-fonts
+  (use-package all-the-icons
+    :ensure t)
 
-  ;; (use-package doom-modeline
-  ;;   :ensure t
-  ;;   :hook (after-init . doom-modeline-mode))
+  (use-package doom-modeline
+    :ensure t
+    :hook (after-init . doom-modeline-mode))
+#+end_src
+
+#+begin_src elisp
+  ;; try smart-mode-line
+  ;; https://github.com/Malabarba/smart-mode-line
 #+end_src
 
 * exec-path-from-shell
@@ -738,7 +727,8 @@ https://fonts.google.com/specimen/Ubuntu+Mono
     :defer 5
     :bind
     (("C-c C-c C-t" . 'go-test-current-test)
-     ("C-c C-c C-f" . 'go-test-current-file)))
+     ("C-c C-c C-f" . 'go-test-current-file)
+     ("C-c C-c C-r" . 'go-run)))
 #+end_src
 
 ** rust
