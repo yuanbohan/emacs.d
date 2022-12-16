@@ -26,6 +26,7 @@
 | M-{                    | Move backward to start of paragraph                |
 |------------------------+----------------------------------------------------|
 | C-t                    | Transpose characters                               |
+| C-x C-t                | Transpose lines                                    |
 | M-t                    | Transpose words                                    |
 |------------------------+----------------------------------------------------|
 | C-x ( and C-x )        | Starts and stops macro recording                   |
@@ -160,8 +161,8 @@ https://www.jetbrains.com/lp/mono/
 https://fonts.google.com/specimen/Ubuntu+Mono
 
 #+BEGIN_SRC emacs-lisp
-  (set-frame-font "JetBrains Mono 12" nil t)
-  ;; (set-frame-font "Ubuntu Mono 18" nil t)
+  (set-frame-font "JetBrains Mono 10" nil t)
+  ;; (set-frame-font "Ubuntu Mono 8" nil t)
 #+END_SRC
 
 * global ui
@@ -643,6 +644,16 @@ https://fonts.google.com/specimen/Ubuntu+Mono
     (add-hook 'project-find-functions #'project-find-go-module)
     (add-hook 'go-mode-hook #'eglot-format-buffer-on-save)
 
+    ;; https://github.com/rust-lang/rust-analyzer/issues/6054
+    ;; {
+    ;;   "rust-analyzer.cargo.loadOutDirsFromCheck": true,
+    ;;   "rust-analyzer.procMacro.enable": true,
+    ;; }
+    ;;
+    ;; https://users.rust-lang.org/t/how-to-disable-rust-analyzer-proc-macro-warnings-in-neovim/53150/6
+    ;; (setq lsp-rust-analyzer-proc-macro-enable t)
+    ;; (setq lsp-rust-analyzer-cargo-load-out-dirs-from-check t)
+
     :bind
     (("C-s-e" . 'eglot)
      ("C-s-r" . 'eglot-rename)
@@ -969,15 +980,77 @@ https://fonts.google.com/specimen/Ubuntu+Mono
 
 * undo tree
 
+In the undo-tree visualizer:
+
+<up>  p  C-p  (`undo-tree-visualize-undo')
+  Undo changes.
+
+<down>  n  C-n  (`undo-tree-visualize-redo')
+  Redo changes.
+
+<left>  b  C-b  (`undo-tree-visualize-switch-branch-left')
+  Switch to previous undo-tree branch.
+
+<right>  f  C-f  (`undo-tree-visualize-switch-branch-right')
+  Switch to next undo-tree branch.
+
+C-<up>  M-{  (`undo-tree-visualize-undo-to-x')
+  Undo changes up to last branch point.
+
+C-<down>  M-}  (`undo-tree-visualize-redo-to-x')
+  Redo changes down to next branch point.
+
+<down>  n  C-n  (`undo-tree-visualize-redo')
+  Redo changes.
+
+<mouse-1>  (`undo-tree-visualizer-mouse-set')
+  Set state to node at mouse click.
+
+t  (`undo-tree-visualizer-toggle-timestamps')
+  Toggle display of time-stamps.
+
+d  (`undo-tree-visualizer-toggle-diff')
+  Toggle diff display.
+
+s  (`undo-tree-visualizer-selection-mode')
+  Toggle keyboard selection mode.
+
+q  (`undo-tree-visualizer-quit')
+  Quit undo-tree-visualizer.
+
+C-q  (`undo-tree-visualizer-abort')
+  Abort undo-tree-visualizer.
+
+,  <
+  Scroll left.
+
+.  >
+  Scroll right.
+
+<pgup>  M-v
+  Scroll up.
+
+<pgdown>  C-v
+
 #+BEGIN_SRC emacs-lisp
   ;; https://elpa.gnu.org/packages/undo-tree.html
-  ;; C-x u
-  ;; C-_  (`undo-tree-undo') Undo changes.
-  ;; M-_  (`undo-tree-redo') Redo changes.
-  ;; (use-package undo-tree
-  ;;   :ensure t
-  ;;   :init
-  ;;   (global-undo-tree-mode))
+  ;; C-_  C-/  (`undo-tree-undo') Undo changes.
+  ;; M-_  C-?  (`undo-tree-redo') Redo changes.
+  ;; C-x u  (`undo-tree-visualize') Visualize the undo tree.
+
+  ;; `undo-tree-switch-branch'
+  ;;   Switch undo-tree branch.
+  ;;   (What does this mean? Better press the button and see!)
+  ;; C-x r u  (`undo-tree-save-state-to-register')
+  ;;   Save current buffer state to register.
+  ;; C-x r U  (`undo-tree-restore-state-from-register')
+  ;;   Restore buffer state from register.
+  (use-package undo-tree
+    :ensure t
+    :init
+    (global-undo-tree-mode)
+    :config
+    (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
 #+END_SRC
 
 * misc packages
@@ -1079,15 +1152,15 @@ https://fonts.google.com/specimen/Ubuntu+Mono
 ** config
 
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package tablist
-  ;;   :ensure t
-  ;;   :defer 5)
+  (use-package tablist
+    :ensure t
+    :defer 5)
 
-  ;; (use-package pdf-tools
-  ;;   :ensure t
-  ;;   :defer 5
-  ;;   :config
-  ;;   (pdf-loader-install))
+  (use-package pdf-tools
+    :ensure t
+    :defer 5
+    :config
+    (pdf-loader-install))
 
 #+END_SRC
 * google this
@@ -1337,7 +1410,10 @@ Only show entries tagged as emacs from a specific feed.
           elfeed-show-entry-switch 'display-buffer)
 
     (setq elfeed-feeds
-          '("https://tdodge.consulting/blog/rss.xml")))
+          '("https://tdodge.consulting/blog/rss.xml"
+            "https://www.v2ex.com/n/23d15adbd7711107999a848296a4f0e3975a3429.xml"
+            ))
+    )
 #+end_src
 
 * tab bar
