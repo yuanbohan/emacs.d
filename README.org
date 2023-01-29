@@ -18,9 +18,13 @@ restart your emacs, packages will be downloaded, installed and configured automa
 
 ** Attention
 
-- font setting may fail your emacs startup, comment it or install the fonts needed
-- ~libvterm~ needs to be compiled, if you do not need it, comment the package
-- there are heavy coding related packages, you'd better comment packages you don't need them
+comment these packages if you do not need, or it may fail your emacs startup
+
+- theme.
+- font. setting may fail your emacs startup (I like JetBrains Mono)
+- libvterm. needs to be compiled
+- pdf-tools. requires a server epdfinfo to run against. visit https://github.com/vedang/pdf-tools for details
+- coding. there are heavy coding related packages
 
 ** major mode for coding
 
