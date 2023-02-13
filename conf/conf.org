@@ -118,14 +118,13 @@ find which makes init slow
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Auto-Save-Control.html
   ;; M-x do-auto-save   : perform an auto-save explicitly
   ;; M-x auto-save-mode : To toggle auto-saving in the current buffer
-  (setq auto-save-default t)
+  ;; (setq auto-save-default t)
   ;; (setq auto-save-timeout 2)
   ;; (setq auto-save-interval 20)
   ;; (setq auto-save-visited-mode t)
   ;; (setq auto-save-visited-interval 2)
 
-  ;; ;; htt
-  ps://www.emacswiki.org/emacs/BackupDirectory
+  ;; https://www.emacswiki.org/emacs/BackupDirectory
   (setq backup-directory-alist
         `((".*" . "~/.emacs.d/backup/")))
   (setq auto-save-file-name-transforms
@@ -171,7 +170,7 @@ https://www.jetbrains.com/lp/mono/
 https://fonts.google.com/specimen/Ubuntu+Mono
 
 #+BEGIN_SRC emacs-lisp
-  (set-frame-font "JetBrains Mono 12" nil t)
+  (set-frame-font "JetBrains Mono 9" nil t)
   ;; (set-frame-font "Ubuntu Mono 12" nil t)
 #+END_SRC
 
