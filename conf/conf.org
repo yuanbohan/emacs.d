@@ -184,17 +184,18 @@ https://fonts.google.com/specimen/Ubuntu+Mono
   (menu-bar-mode -1) ; show/hide menu bar
   (tool-bar-mode -1) ; show/hide tool bar
   (scroll-bar-mode -1) ; show/hide scroll bar
-  (global-linum-mode -1) ; show/hide line number
+  ;; (global-linum-mode -1) ; show/hide line number
+  (display-line-numbers-mode -1)
   ;; (visual-line-mode 1) ; word wrap
-  (global-hl-line-mode 1) ; highlight current line
+  ;; (global-hl-line-mode 1) ; highlight current line
   (setq column-number-mode t)
 #+END_SRC
 
 * transparency
 
 #+BEGIN_SRC emacs-lisp
-  (set-frame-parameter (selected-frame) 'alpha '(80 100))
-  (add-to-list 'default-frame-alist '(alpha 80 100))
+  ;; (set-frame-parameter (selected-frame) 'alpha '(80 100))
+  ;; (add-to-list 'default-frame-alist '(alpha 80 100))
 #+END_SRC
 
 * smart-line
@@ -246,15 +247,16 @@ https://fonts.google.com/specimen/Ubuntu+Mono
 
 * beacon
 
+https://github.com/Malabarba/beacon
+
 #+BEGIN_SRC emacs-lisp
-    ;; https://github.com/Malabarba/beacon
-  (use-package beacon
-    :ensure t
-    :config
-    (beacon-mode 1)
-    ;; (setq beacon-blink-duration 0.5)
-    ;; (setq beacon-color "green")
-    )
+  ;; (use-package beacon
+  ;;   :ensure t
+  ;;   :config
+  ;;   (beacon-mode 1)
+  ;;   ;; (setq beacon-blink-duration 0.5)
+  ;;   ;; (setq beacon-color "green")
+  ;;   )
 #+END_SRC
 
 * theme
@@ -281,20 +283,20 @@ https://fonts.google.com/specimen/Ubuntu+Mono
   ;; M-x color-theme-sanityinc-tomorrow-blue
   ;; M-x color-theme-sanityinc-tomorrow-bright
   ;; M-x color-theme-sanityinc-tomorrow-eighties
-  (use-package color-theme-sanityinc-tomorrow
-    :ensure t
-    :config
-    (require 'color-theme-sanityinc-tomorrow))
+  ;; (use-package color-theme-sanityinc-tomorrow
+  ;;   :ensure t
+  ;;   :config
+  ;;   (require 'color-theme-sanityinc-tomorrow))
 
   ;; (use-package dracula-theme
   ;;   :ensure t
   ;;   :config
   ;;   (load-theme 'dracula t))
 
-  ;; (use-package zenburn-theme
-  ;;   :ensure t
-  ;;   :config
-  ;;   (load-theme 'zenburn t))
+  (use-package zenburn-theme
+    :ensure t
+    :config
+    (load-theme 'zenburn t))
 
   ;; (use-package solarized-theme
   ;;   :ensure t
@@ -472,13 +474,13 @@ https://github.com/Malabarba/smart-mode-line
     (setq ivy-use-virtual-buffers t)
     (setq enable-recursive-minibuffers t)
     (setq ivy-count-format "(%d/%d) ")
-    (setq ivy-wrap t)
+    ;; (setq ivy-wrap t)
     :bind
     (("C-s"     . 'swiper-isearch)
      ("M-x"     . 'counsel-M-x)
      ("M-y"     . 'counsel-yank-pop)
      ("C-x C-f" . 'counsel-find-file)
-     ("C-x b"   . 'ivy-switch-buffer)
+     ;; ("C-x b"   . 'ivy-switch-buffer)
 
      ;; ("M-n" . ivy-next-history-element)
      ;; ("M-p" . ivy-previous-history-element)
@@ -696,61 +698,61 @@ https://github.com/Malabarba/smart-mode-line
 ** clojure and cider
 
 #+BEGIN_SRC emacs-lisp
-  (use-package clojure-mode
-    :ensure t
-    :defer 5
-    :hook (('clojure-mode . 'eldoc-mode))
-    :config
-    (setq align-arguments t)
-    ;; compojure indentation
-    ;; (define-clojure-indent
-    ;;   (defroutes 'defun)
-    ;;   (GET 2)
-    ;;   (POST 2)
-    ;;   (PUT 2)
-    ;;   (DELETE 2)
-    ;;   (HEAD 2)
-    ;;   (ANY 2)
-    ;;   (OPTIONS 2)
-    ;;   (PATCH 2)
-    ;;   (rfn 2)
-    ;;   (let-routes 1)
-    ;;   (context 2))
-    )
+  ;; (use-package clojure-mode
+  ;;   :ensure t
+  ;;   :defer 5
+  ;;   :hook (('clojure-mode . 'eldoc-mode))
+  ;;   :config
+  ;;   (setq align-arguments t)
+  ;;   ;; compojure indentation
+  ;;   ;; (define-clojure-indent
+  ;;   ;;   (defroutes 'defun)
+  ;;   ;;   (GET 2)
+  ;;   ;;   (POST 2)
+  ;;   ;;   (PUT 2)
+  ;;   ;;   (DELETE 2)
+  ;;   ;;   (HEAD 2)
+  ;;   ;;   (ANY 2)
+  ;;   ;;   (OPTIONS 2)
+  ;;   ;;   (PATCH 2)
+  ;;   ;;   (rfn 2)
+  ;;   ;;   (let-routes 1)
+  ;;   ;;   (context 2))
+  ;;   )
 
-  (use-package cider
-    :ensure t
-    :after clojure-mode
-    :config
-    ;; go right to the REPL buffer when it's finished connecting
-    (setq cider-repl-pop-to-buffer-on-connect t)
+  ;; (use-package cider
+  ;;   :ensure t
+  ;;   :after clojure-mode
+  ;;   :config
+  ;;   ;; go right to the REPL buffer when it's finished connecting
+  ;;   (setq cider-repl-pop-to-buffer-on-connect t)
 
-    ;; When there's a cider error, show its buffer and switch to it
-    (setq cider-show-error-buffer t)
-    (setq cider-auto-select-error-buffer t)
-    (setq cider-test-show-report-on-success t)
+  ;;   ;; When there's a cider error, show its buffer and switch to it
+  ;;   (setq cider-show-error-buffer t)
+  ;;   (setq cider-auto-select-error-buffer t)
+  ;;   (setq cider-test-show-report-on-success t)
 
-    ;; Where to store the cider history.
-    (setq cider-repl-history-file "~/.emacs.d/cider-history")
+  ;;   ;; Where to store the cider history.
+  ;;   (setq cider-repl-history-file "~/.emacs.d/cider-history")
 
-    ;; Wrap when navigating history.
-    (setq cider-repl-wrap-history t)
+  ;;   ;; Wrap when navigating history.
+  ;;   (setq cider-repl-wrap-history t)
 
-    ;; turn off eldoc displayed when the cursor is over code
-    (setq cider-prompt-for-symbol nil)
+  ;;   ;; turn off eldoc displayed when the cursor is over code
+  ;;   (setq cider-prompt-for-symbol nil)
 
-    ;; Just save without prompting, C-c C-k
-    (setq cider-save-file-on-load t)
+  ;;   ;; Just save without prompting, C-c C-k
+  ;;   (setq cider-save-file-on-load t)
 
-    ;; evaluate code in Clojure files, display result overlay to be font-locked
-    (setq cider-overlays-use-font-lock t)
+  ;;   ;; evaluate code in Clojure files, display result overlay to be font-locked
+  ;;   (setq cider-overlays-use-font-lock t)
 
-    (setq cider-refresh-show-log-buffer t)
+  ;;   (setq cider-refresh-show-log-buffer t)
 
-    (setq cider-repl-tab-command #'indent-for-tab-command)
+  ;;   (setq cider-repl-tab-command #'indent-for-tab-command)
 
-    (setq cider-eldoc-display-for-symbol-at-point nil)
-    (setq cider-repl-display-help-banner nil))
+  ;;   (setq cider-eldoc-display-for-symbol-at-point nil)
+  ;;   (setq cider-repl-display-help-banner nil))
 #+END_SRC
 
 ** python
@@ -1073,12 +1075,12 @@ C-q  (`undo-tree-visualizer-abort')
   ;;   Save current buffer state to register.
   ;; C-x r U  (`undo-tree-restore-state-from-register')
   ;;   Restore buffer state from register.
-  (use-package undo-tree
-    :ensure t
-    :init
-    (global-undo-tree-mode)
-    :config
-    (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
+  ;; (use-package undo-tree
+  ;;   :ensure t
+  ;;   :init
+  ;;   (global-undo-tree-mode)
+  ;;   :config
+  ;;   (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
 #+END_SRC
 
 * misc packages
@@ -1111,21 +1113,6 @@ C-q  (`undo-tree-visualizer-abort')
      ;; ("s-c" . 'avy-goto-char-2)
      ("s-c" . 'avy-goto-word-1)
      ))
-#+END_SRC
-
-* Highlights matching parenthesis
-
-#+BEGIN_SRC emacs-lisp
-  ;; https://github.com/tarsius/paren-face
-  (use-package paren-face
-    :ensure t
-    :config
-    (setq show-paren-delay 0)
-    (show-paren-mode 1)
-    (set-face-background 'show-paren-match (face-background 'default))
-    (set-face-foreground 'show-paren-match "red")
-    ;; (set-face-attribute 'show-paren-match nil :strike-through t :weight 'extra-bold)
-    )
 #+END_SRC
 
 * whitespace cleanup
@@ -1178,15 +1165,15 @@ C-q  (`undo-tree-visualizer-abort')
 ** config
 
 #+BEGIN_SRC emacs-lisp
-  (use-package tablist
-    :ensure t
-    :defer 5)
+  ;; (use-package tablist
+  ;;   :ensure t
+  ;;   :defer 5)
 
-  (use-package pdf-tools
-    :ensure t
-    :defer 5
-    :config
-    (pdf-loader-install))
+  ;; (use-package pdf-tools
+  ;;   :ensure t
+  ;;   :defer 5
+  ;;   :config
+  ;;   (pdf-loader-install))
 #+END_SRC
 * google this
 
@@ -1441,20 +1428,6 @@ Only show entries tagged as emacs from a specific feed.
     )
 #+end_src
 
-* tab bar
-tab-bar-show tab-next, tab-switcher tab-new, tab-close
-
-The prefix key C-x t
-
-#+begin_src emacs-lisp
-  ;; (use-package tabbar
-  ;;     :ensure t
-  ;;     :defer 5
-  ;;     :config
-  ;;     (setq tab-bar-show t)
-  ;;     (setq tab-bar-tab-hints t))
-#+end_src
-
 * treemacs
 
 #+begin_src emacs-lisp
@@ -1500,6 +1473,7 @@ The prefix key C-x t
             treemacs-recenter-after-project-jump     'always
             treemacs-recenter-after-project-expand   'on-distance
             treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
+            treemacs-project-follow-into-home        nil
             treemacs-show-cursor                     nil
             treemacs-show-hidden-files               t
             treemacs-silent-filewatch                nil
@@ -1526,7 +1500,7 @@ The prefix key C-x t
       ;; (treemacs-filewatch-mode t)
       ;; (treemacs-fringe-indicator-mode 'always)
       ;; (when treemacs-python-executable
-      ;; (treemacs-git-commit-diff-mode t))
+      ;;   (treemacs-git-commit-diff-mode t))
 
       ;; (pcase (cons (not (null (executable-find "git")))
       ;;              (not (null treemacs-python-executable)))
@@ -1537,12 +1511,11 @@ The prefix key C-x t
 
       (treemacs-hide-gitignored-files-mode nil))
     :bind
-    ;; M-- M-0 switch workspace
     (:map global-map
           ("M-0"       . treemacs-select-window)
           ("C-x t 1"   . treemacs-delete-other-windows)
-          ("s-t"       . treemacs)
           ("C-x t t"   . treemacs)
+          ("s-t"       . treemacs)
           ("C-x t d"   . treemacs-select-directory)
           ("C-x t B"   . treemacs-bookmark)
           ("C-x t C-t" . treemacs-find-file)
@@ -1552,17 +1525,17 @@ The prefix key C-x t
   ;;   :after (treemacs evil)
   ;;   :ensure t)
 
-  ;; (use-package treemacs-projectile
-  ;;   :after (treemacs projectile)
-  ;;   :ensure t)
+  (use-package treemacs-projectile
+    :after (treemacs projectile)
+    :ensure t)
 
   (use-package treemacs-icons-dired
     :hook (dired-mode . treemacs-icons-dired-enable-once)
     :ensure t)
 
-  ;; (use-package treemacs-magit
-  ;;   :after (treemacs magit)
-  ;;   :ensure t)
+  (use-package treemacs-magit
+    :after (treemacs magit)
+    :ensure t)
 
   ;; (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
   ;;   :after (treemacs persp-mode) ;;or perspective vs. persp-mode
@@ -1573,7 +1546,6 @@ The prefix key C-x t
   ;;   :after (treemacs)
   ;;   :ensure t
   ;;   :config (treemacs-set-scope-type 'Tabs))
-
 #+end_src
 
 * libvterm
@@ -1585,13 +1557,13 @@ C-c C-l vterm-clear-scrollback
 compile libvterm is needed
 
 #+begin_src elisp
-  (use-package vterm
-    :ensure t
-    :defer 5
-    :config
-    ;; (setq vterm-kill-buffer-on-exit t)
-    (setq vterm-copy-exclude-prompt nil))
-  (global-set-key (kbd "C-c C-t") 'vterm-other-window)
+  ;; (use-package vterm
+  ;;   :ensure t
+  ;;   :defer 5
+  ;;   :config
+  ;;   ;; (setq vterm-kill-buffer-on-exit t)
+  ;;   (setq vterm-copy-exclude-prompt nil))
+  ;; (global-set-key (kbd "C-c C-t") 'vterm-other-window)
 #+end_src
 
 * embark
